@@ -1,21 +1,10 @@
 pipeline {
   agent any
 
-  tools {
-    maven 'Maven3.9' // Nombre del Maven configurado en Jenkins
-    jdk 'JDK11'
-  }
-
   stages {
     stage('Checkout') {
       steps {
         checkout scm
-      }
-    }
-
-    stage('Build & Deploy to Nexus') {
-      steps {
-        sh 'mvn clean deploy'
       }
     }
   }
