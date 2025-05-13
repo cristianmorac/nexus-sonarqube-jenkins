@@ -11,5 +11,11 @@ pipeline {
         checkout scm
       }
     }
+
+    stage('Build & Deploy') {
+      steps {
+        sh 'mvn clean deploy'
+      }
+    }
   }
 }
