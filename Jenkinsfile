@@ -7,7 +7,7 @@ pipeline {
     }
 
     tools {
-        maven 'maven_3' // Nombre exacto como lo tienes configurado
+        maven 'maven_3'
     }
 
     stages {
@@ -23,11 +23,13 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
+        stage('SonarQube Scan') {
             steps {
                 withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
-                    sh 'mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN'
+                    sh '''
+                        sonar-scanner \
+                          -Dsonar.login=$SONAR_TOKEN
+                    '''
                 }
             }
-    }
 }
