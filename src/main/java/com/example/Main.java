@@ -14,7 +14,7 @@ public class Main {
         server.createContext("/", new HelloHandler());
         server.setExecutor(null);
         server.start();
-        logger("Servidor iniciado en http://localhost:8080/");
+        System.out.println("Servidor iniciado en http://localhost:8080/");
     }
 
     static class HelloHandler implements HttpHandler {
